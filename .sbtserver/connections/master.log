@@ -1,0 +1,13 @@
+New log file opened at Mon Aug 15 15:57:44 CEST 2016 by 16284@msmb.local
+Taking next connection to: 63744
+New client attempting to connect on port: 63745-63744
+  Address = /192.168.222.224:63744
+This client on port 63745 has uuid 020fa503-9d14-4152-bb2a-04d94c74138c configName play-fork-run humanReadableName Play Fork Run protocolVersion 1 featureTags Vector()
+Connected Clients: play-fork-run-020fa503-9d14-4152-bb2a-04d94c74138c
+Taking next connection to: 63744
+Checking to see if clients are empty...
+No non-daemon clients connected after 3 min. Shutting down.
+Server socket thread exiting.
+0 clients open, will close them...
+All client sockets have been closed.
+Closing the 16284@msmb.local logs at Mon Aug 15 16:00:44 CEST 2016, goodbye.
