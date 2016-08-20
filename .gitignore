@@ -22,3 +22,5 @@ server.pid
 /dist/
 .cache
 /tutorial
+*.log
+.sbtserver
