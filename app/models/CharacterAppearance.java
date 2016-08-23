@@ -47,14 +47,20 @@ public class CharacterAppearance extends Model {
     }
 
     public static List<CharacterAppearance> findByCharacterAndOrder(Long characterId, OrderType orderType) {
-        return find.where()
+        return find
+                .fetch("character")
+                .fetch("issue")
+                .where()
                 .eq("issue.orders.orderType", orderType.name())
                 .eq("character.id", characterId)
                 .findList();
     }
 
     public static List<CharacterAppearance> findByCharacterAndTitleAndOrder(Long characterId, Long titleId, OrderType orderType) {
-        return find.where()
+        return find
+                .fetch("character")
+                .fetch("issue")
+                .where()
                 .eq("issue.orders.orderType", orderType.name())
                 .eq("issue.title.id", titleId)
                 .eq("character.id", characterId)

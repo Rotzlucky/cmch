@@ -83,5 +83,29 @@ public class ModelsTest extends WithApplication{
 
         List<CharacterAppearance> appearances = CharacterAppearance.findByCharacterAndTitleAndOrder(character.id, title.id, OrderType.MAIN);
         assertEquals(3, appearances.size());
+        assertEquals("Mister Fantastic", appearances.get(0).character.characterName);
+        assertEquals("Fantastic Four", appearances.get(0).issue.title.titleName);
+        assertEquals(OrderType.MAIN, appearances.get(0).issue.orders.get(0).orderType);
+    }
+
+    @Test
+    public void testToString() {
+        Character character = Character.findByCharacterName("Mister Fantastic");
+        assertEquals("Mister Fantastic (Reed Richards)", character.toString());
+
+        character = Character.findByCharacterName("Thor");
+        assertEquals("Thor (Thor Odinson)", character.toString());
+
+        character = Character.findByCharacterName("Henry Pym");
+        assertEquals("Henry Pym", character.toString());
+
+        Issue issue = Issue.findByIssueName("The Avengers meet Sub-Mariner!");
+        assertEquals("Avengers (v1) #3", issue.getTitleString());
+
+        issue = Issue.findByIssueName("The Return of the Mole Man!");
+        assertEquals("Fantastic Four (v1) #22", issue.getTitleString());
+
+        issue = Issue.findByIssueName("The Man Called Electro!");
+        assertEquals("Amazing Spider-Man (v1) #9", issue.getTitleString());
     }
 }

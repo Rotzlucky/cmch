@@ -23,6 +23,8 @@ public class Title extends Model {
     public Long id;
     public String titleName;
     public String titleNumber;
+    @OneToMany
+    public List<Issue> issues = new ArrayList<>();
     public Date createdAt;
     public Date modifiedAt;
 
@@ -44,6 +46,10 @@ public class Title extends Model {
 
     public static Title findByNameAndNumber(String titleName, String titleNumber) {
         return find.where().eq("titleName", titleName).eq("titleNumber", titleNumber).findUnique();
+    }
+
+    public String toString() {
+        return this.titleName + " (" + this.titleNumber + ")";
     }
 
 }

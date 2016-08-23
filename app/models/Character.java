@@ -56,4 +56,16 @@ public class Character extends Model{
     public static Character findByCharacterName(String characterName) {
         return find.where().eq("characterName", characterName).findUnique();
     }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(characterName);
+        if (!characterName.equals(characterRealName)) {
+            stringBuilder.append(" (");
+            stringBuilder.append(characterRealName);
+            stringBuilder.append(")");
+        }
+
+        return stringBuilder.toString();
+    }
 }

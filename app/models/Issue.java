@@ -72,23 +72,39 @@ public class Issue extends Model{
                                int publishYear,
                                long titleId,
                                List<Long> teamIds) {
+        Title title = Title.find.ref(titleId);
+
         Issue issue = new Issue(
                 issueName,
                 issueNumber,
                 issueNumberSuffix,
                 Month.valueOf(publishMonth),
                 publishYear,
-                Title.find.ref(titleId),
+                title,
                 Team.find.where().idIn(teamIds).findList()
         );
         issue.save();
-
         Ebean.saveManyToManyAssociations(issue, "teams");
+        title.issues.add(issue);
+        Ebean.saveAssociation(title, "issues");
 
         return issue;
     }
 
     public static Issue findByIssueName(String issueName) {
-        return find.where().eq("issueName", issueName).findUnique();
+        return find.fetch("title").where().eq("issueName", issueName).findUnique();
+    }
+
+    public String getTitleString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(this.title.toString());
+        stringBuilder.append(" #");
+        stringBuilder.append(issueNumber);
+        if (issueNumberSuffix != null) {
+            stringBuilder.append(issueNumberSuffix);
+        }
+
+        return stringBuilder.toString();
     }
 }
