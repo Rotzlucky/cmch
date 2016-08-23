@@ -53,5 +53,13 @@ public class CharacterAppearance extends Model {
                 .findList();
     }
 
+    public static List<CharacterAppearance> findByCharacterAndTitleAndOrder(Long characterId, Long titleId, OrderType orderType) {
+        return find.where()
+                .eq("issue.orders.orderType", orderType.name())
+                .eq("issue.title.id", titleId)
+                .eq("character.id", characterId)
+                .findList();
+    }
+
 
 }

@@ -51,37 +51,37 @@ public class ModelsTest extends WithApplication{
 
     @Test
     public void testCharacterTeamsSize() {
-        List<Character> characters = Character.find.where().eq("characterName", "Spider-Man").findList();
-        assertEquals(1, characters.size());
-        assertEquals(0, characters.get(0).teams.size());
+        Character character = Character.findByCharacterName("Spider-Man");
+        assertEquals(0, character.teams.size());
 
-        characters = Character.find.where().eq("characterName", "Mister Fantastic").findList();
-        assertEquals(1, characters.size());
-        assertEquals(1, characters.get(0).teams.size());
+        character = Character.findByCharacterName("Mister Fantastic");
+        assertEquals(1, character.teams.size());
     }
 
     @Test
     public void testIssueTeamSize() {
-        List<Issue> issues = Issue.find.where().eq("issueName", "The Avengers meet Sub-Mariner!").findList();
-        assertEquals(1, issues.size());
-        assertEquals(2, issues.get(0).teams.size());
+        Issue issue = Issue.findByIssueName("The Avengers meet Sub-Mariner!");
+        assertEquals(2, issue.teams.size());
 
-        issues = Issue.find.where().eq("issueName", "The Return of the Mole Man!").findList();
-        assertEquals(1, issues.size());
-        assertEquals(1, issues.get(0).teams.size());
+        issue = Issue.findByIssueName("The Return of the Mole Man!");
+        assertEquals(1, issue.teams.size());
 
-        issues = Issue.find.where().eq("issueName", "The Man Called Electro!").findList();
-        assertEquals(1, issues.size());
-        assertEquals(0, issues.get(0).teams.size());
+        issue = Issue.findByIssueName("The Man Called Electro!");
+        assertEquals(0, issue.teams.size());
     }
 
     @Test
     public void testAppearances() {
-        Character character = Character.find.where().eq("characterName", "Mister Fantastic").findUnique();
+        Character character = Character.findByCharacterName("Mister Fantastic");
+        Title title = Title.findByNameAndNumber("Fantastic Four", "v1");
+
         List<CharacterAppearance> byCharacterAndOrder = CharacterAppearance.findByCharacterAndOrder(character.id, OrderType.MAIN);
-        assertEquals(3, byCharacterAndOrder.size());
+        assertEquals(4, byCharacterAndOrder.size());
 
         byCharacterAndOrder = CharacterAppearance.findByCharacterAndOrder(character.id, OrderType.CORE);
         assertEquals(0, byCharacterAndOrder.size());
+
+        List<CharacterAppearance> appearances = CharacterAppearance.findByCharacterAndTitleAndOrder(character.id, title.id, OrderType.MAIN);
+        assertEquals(3, appearances.size());
     }
 }

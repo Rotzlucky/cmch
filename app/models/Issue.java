@@ -87,4 +87,8 @@ public class Issue extends Model{
 
         return issue;
     }
+
+    public static Issue findByIssueName(String issueName) {
+        return find.where().eq("issueName", issueName).findUnique();
+    }
 }

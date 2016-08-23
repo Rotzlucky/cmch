@@ -52,4 +52,8 @@ public class Character extends Model{
 
         return character;
     }
+
+    public static Character findByCharacterName(String characterName) {
+        return find.where().eq("characterName", characterName).findUnique();
+    }
 }

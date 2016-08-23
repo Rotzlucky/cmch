@@ -168,7 +168,7 @@
 - &avengers3main !!models.Order
     orderNumber: 134
     orderType: MAIN
-    issue: *avengers4
+    issue: *avengers3
 
 - &fanta422main !!models.Order
     orderNumber: 135

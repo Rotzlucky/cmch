@@ -42,4 +42,8 @@ public class Title extends Model {
         return title;
     }
 
+    public static Title findByNameAndNumber(String titleName, String titleNumber) {
+        return find.where().eq("titleName", titleName).eq("titleNumber", titleNumber).findUnique();
+    }
+
 }
