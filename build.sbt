@@ -14,7 +14,11 @@ libraryDependencies ++= Seq(
   evolutions
 )
 
+javaOptions in Test += "-Dconfig.file=conf/test.conf"
+
 PlayKeys.externalizeResources := false
 
 //fork in run := true
 offline := true;
+
+fork in run := true

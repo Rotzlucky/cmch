@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,8 +25,21 @@ public class Title extends Model {
     public String titleNumber;
     public Date createdAt;
     public Date modifiedAt;
-    @OneToMany(cascade = CascadeType.REMOVE)
-    public List<Issue> issues;
 
+    public static Finder<Long, Title> find = new Finder<>(Title.class);
+
+    public Title(String titleName, String titleNumber) {
+        this.titleName = titleName;
+        this.titleNumber = titleNumber;
+        this.createdAt = new Date();
+        this.modifiedAt = new Date();
+    }
+
+    public static Title create(String titleName, String titleNumber) {
+        Title title = new Title(titleName, titleNumber);
+        title.save();
+
+        return title;
+    }
 
 }

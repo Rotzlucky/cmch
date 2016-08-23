@@ -1,0 +1,339 @@
+# titles
+
+- &fanta4title !!models.Title
+    titleName:      Fantastic Four
+    titleNumber:    v1
+
+- &spidertitle !!models.Title
+    titleName:      Amazing Spider-Man
+    titleNumber:    v1
+
+- &avengerstitle !!models.Title
+    titleName:      Avengers
+    titleNumber:    v1
+
+# teams
+
+- &fanta4team !!models.Team
+    teamName:      Fantastic Four
+
+- &avengersteam !!models.Team
+    teamName:      Avengers
+
+# character
+
+- &mister_fantastic !!models.Character
+    characterName:      Mister Fantastic
+    characterRealName:  Reed Richards
+    imageName:          mister_fantastic
+    teams:
+        - *fanta4team
+
+- &invisible_girl !!models.Character
+    characterName:      Invisible Girl
+    characterRealName:  Susan Storm
+    imageName:          invisible_girl
+    teams:
+        - *fanta4team
+
+- &thing !!models.Character
+    characterName:      Thing
+    characterRealName:  Benjamin Grimm
+    imageName:          thing
+    teams:
+        - *fanta4team
+
+- &human_torch !!models.Character
+    characterName:      Human Torch
+    characterRealName:  Johnny Storm
+    imageName:          human_torch
+    teams:
+        - *fanta4team
+
+- &spiderman !!models.Character
+    characterName:      Spider-Man
+    characterRealName:  Peter Parker
+    imageName:          spider_man
+    teams:
+
+
+- &thor !!models.Character
+    characterName:      Thor
+    characterRealName:  Thor Odinson
+    imageName:          thor
+    teams:
+        - *avengersteam
+
+- &iron_man !!models.Character
+    characterName:      Iron Man
+    characterRealName:  Tony Stark
+    imageName:          iron_man
+    teams:
+        - *avengersteam
+
+- &hulk !!models.Character
+    characterName:      Hulk
+    characterRealName:  Bruce Banner
+    imageName:          hulk
+    teams:
+        - *avengersteam
+
+- &henry_pym !!models.Character
+    characterName:      Henry Pym
+    characterRealName:  Henry Pym
+    imageName:          henry_pym
+    teams:
+        - *avengersteam
+
+- &wasp !!models.Character
+    characterName:      Wasp
+    characterRealName:  Janet van Dyne
+    imageName:          wasp
+    teams:
+        - *avengersteam
+
+#issues
+
+- &avengers3 !!models.Issue
+    issueName: The Avengers meet Sub-Mariner!
+    issueNumber: 3
+    issueNumberSuffix:
+    publishMonth: JANUARY
+    publishYear: 1964
+    title: *avengerstitle
+    teams:
+        - *avengersteam
+        - *fanta4team
+
+- &fanta422 !!models.Issue
+    issueName: The Return of the Mole Man!
+    issueNumber: 22
+    issueNumberSuffix:
+    publishMonth: JANUARY
+    publishYear: 1964
+    title: *fanta4title
+    teams:
+        - *fanta4team
+
+- &fanta423 !!models.Issue
+    issueName: The Master Plan of Doctor Doom!
+    issueNumber: 23
+    issueNumberSuffix:
+    publishMonth: FEBRUARY
+    publishYear: 1964
+    title: *fanta4title
+    teams:
+        - *fanta4team
+
+- &spiderman9 !!models.Issue
+    issueName: The Man Called Electro!
+    issueNumber: 9
+    issueNumberSuffix:
+    publishMonth: FEBRUARY
+    publishYear: 1964
+    title: *spidertitle
+    teams:
+
+- &spiderman10 !!models.Issue
+    issueName: The Enforcers!
+    issueNumber: 10
+    issueNumberSuffix:
+    publishMonth: MARCH
+    publishYear: 1964
+    title: *spidertitle
+    teams:
+
+- &fanta424 !!models.Issue
+    issueName: The Infant Terrible!
+    issueNumber: 24
+    issueNumberSuffix:
+    publishMonth: MARCH
+    publishYear: 1964
+    title: *fanta4title
+    teams:
+        - *fanta4team
+
+- &avengers4 !!models.Issue
+    issueName: Captain America Joins...The Avengers!
+    issueNumber: 4
+    issueNumberSuffix:
+    publishMonth: MARCH
+    publishYear: 1964
+    title: *avengerstitle
+    teams:
+        - *avengersteam
+
+#orders
+
+- &avengers3main !!models.Order
+    orderNumber: 134
+    orderType: MAIN
+    issue: *avengers4
+
+- &fanta422main !!models.Order
+    orderNumber: 135
+    orderType: MAIN
+    issue: *fanta422
+
+- &fanta423main !!models.Order
+    orderNumber: 139
+    orderType: MAIN
+    issue: *fanta423
+
+- &spiderman9main !!models.Order
+    orderNumber: 140
+    orderType: MAIN
+    issue: *spiderman9
+
+- &spiderman10main !!models.Order
+    orderNumber: 143
+    orderType: MAIN
+    issue: *spiderman10
+
+- &fanta424main !!models.Order
+    orderNumber: 147
+    orderType: MAIN
+    issue: *fanta424
+
+- &avengers4main !!models.Order
+    orderNumber: 148
+    orderType: MAIN
+    issue: *avengers4
+
+#characterAppearances
+
+- &avengers3thor !!models.CharacterAppearance
+    description: Thor has a hammer
+    character: *thor
+    issue: *avengers3
+
+- &avengers3iron_man !!models.CharacterAppearance
+    description: Iron Man has Transistors
+    character: *iron_man
+    issue: *avengers3
+
+- &avengers3hulk !!models.CharacterAppearance
+    description: Hulk Smash
+    character: *hulk
+    issue: *avengers3
+
+- &avengers3henry_pym !!models.CharacterAppearance
+    description: Giant Man is big
+    character: *henry_pym
+    issue: *avengers3
+
+- &avengers3wasp !!models.CharacterAppearance
+    description: Wasp stings
+    character: *wasp
+    issue: *avengers3
+
+- &avengers3mister_fantastic !!models.CharacterAppearance
+    description: Reed becomes the cup
+    character: *mister_fantastic
+    issue: *avengers3
+
+- &avengers3invisible_girl !!models.CharacterAppearance
+    description: Invisible Girl is not seen in this issue
+    character: *invisible_girl
+    issue: *avengers3
+
+- &avengers3thing !!models.CharacterAppearance
+    description: Thing rocks
+    character: *thing
+    issue: *avengers3
+
+- &avengers3human_torch !!models.CharacterAppearance
+    description: Johnny is on fire
+    character: *human_torch
+    issue: *avengers3
+
+- &fanta422mister_fantastic !!models.CharacterAppearance
+    description: Reed becomes the cup
+    character: *mister_fantastic
+    issue: *fanta422
+
+- &fanta422invisible_girl !!models.CharacterAppearance
+    description: Invisible Girl is not seen in this issue
+    character: *invisible_girl
+    issue: *fanta422
+
+- &fanta422thing !!models.CharacterAppearance
+    description: Thing rocks
+    character: *thing
+    issue: *fanta422
+
+- &fanta422human_torch !!models.CharacterAppearance
+    description: Johnny is on fire
+    character: *human_torch
+    issue: *fanta422
+
+- &fanta423mister_fantastic !!models.CharacterAppearance
+    description: Reed becomes the cup
+    character: *mister_fantastic
+    issue: *fanta423
+
+- &fanta423invisible_girl !!models.CharacterAppearance
+    description: Invisible Girl is not seen in this issue
+    character: *invisible_girl
+    issue: *fanta423
+
+- &fanta423thing !!models.CharacterAppearance
+    description: Thing rocks
+    character: *thing
+    issue: *fanta423
+
+- &fanta423human_torch !!models.CharacterAppearance
+    description: Johnny is on fire
+    character: *human_torch
+    issue: *fanta423
+
+- &spiderman9spiderman !!models.CharacterAppearance
+    description: Peter is snarky
+    character: *spiderman
+    issue: *spiderman9
+
+- &spiderman10spiderman !!models.CharacterAppearance
+    description: Peter is snarky
+    character: *spiderman
+    issue: *spiderman10
+
+- &fanta424mister_fantastic !!models.CharacterAppearance
+    description: Reed becomes the cup
+    character: *mister_fantastic
+    issue: *fanta424
+
+- &fanta424invisible_girl !!models.CharacterAppearance
+    description: Invisible Girl is not seen in this issue
+    character: *invisible_girl
+    issue: *fanta424
+
+- &fanta424thing !!models.CharacterAppearance
+    description: Thing rocks
+    character: *thing
+    issue: *fanta424
+
+- &fanta424human_torch !!models.CharacterAppearance
+    description: Johnny is on fire
+    character: *human_torch
+    issue: *fanta424
+
+- &avengers4thor !!models.CharacterAppearance
+    description: Thor has a hammer
+    character: *thor
+    issue: *avengers4
+
+- &avengers4iron_man !!models.CharacterAppearance
+    description: Iron Man has Transistors
+    character: *iron_man
+    issue: *avengers4
+
+- &avengers4henry_pym !!models.CharacterAppearance
+    description: Giant Man is big
+    character: *henry_pym
+    issue: *avengers4
+
+- &avengers4wasp !!models.CharacterAppearance
+    description: Wasp stings
+    character: *wasp
+    issue: *avengers4
+

@@ -29,4 +29,20 @@ public class Order extends Model{
     public Date createdAt;
     public Date modifiedAt;
 
+    public static Finder<Long, Order> find = new Finder<>(Order.class);
+
+    public Order(int orderNumber, OrderType orderType, Issue issue) {
+        this.orderNumber = orderNumber;
+        this.orderType = orderType;
+        this.issue = issue;
+        this.createdAt = new Date();
+        this.modifiedAt = new Date();
+    }
+
+    public static Order create(int orderNumber, String orderType, Long issueId) {
+        Order order = new Order(orderNumber, OrderType.valueOf(orderType), Issue.find.ref(issueId));
+        order.save();
+
+        return order;
+    }
 }

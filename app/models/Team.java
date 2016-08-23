@@ -22,4 +22,18 @@ public class Team extends Model{
     public Date createdAt;
     public Date modifiedAt;
 
+    public static Finder<Long, Team> find = new Finder<>(Team.class);
+
+    public Team(String teamName) {
+        this.teamName = teamName;
+        this.createdAt = new Date();
+        this.modifiedAt = new Date();
+    }
+
+    public static Team create(String teamName) {
+        Team team = new Team(teamName);
+        team.save();
+
+        return team;
+    }
 }
