@@ -40,6 +40,8 @@ public class Issue extends Model{
     public Title title;
     @ManyToMany
     public List<Team> teams;
+    @OneToMany
+    public List<Order> orders = new ArrayList<>();
     public Date createdAt;
     public Date modifiedAt;
 

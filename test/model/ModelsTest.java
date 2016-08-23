@@ -7,6 +7,7 @@ import models.Issue;
 import models.Order;
 import models.Team;
 import models.Title;
+import models.enums.OrderType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,5 +73,15 @@ public class ModelsTest extends WithApplication{
         issues = Issue.find.where().eq("issueName", "The Man Called Electro!").findList();
         assertEquals(1, issues.size());
         assertEquals(0, issues.get(0).teams.size());
+    }
+
+    @Test
+    public void testAppearances() {
+        Character character = Character.find.where().eq("characterName", "Mister Fantastic").findUnique();
+        List<CharacterAppearance> byCharacterAndOrder = CharacterAppearance.findByCharacterAndOrder(character.id, OrderType.MAIN);
+        assertEquals(3, byCharacterAndOrder.size());
+
+        byCharacterAndOrder = CharacterAppearance.findByCharacterAndOrder(character.id, OrderType.CORE);
+        assertEquals(0, byCharacterAndOrder.size());
     }
 }

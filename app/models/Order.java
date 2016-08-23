@@ -1,5 +1,6 @@
 package models;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import models.enums.OrderType;
 
@@ -40,8 +41,13 @@ public class Order extends Model{
     }
 
     public static Order create(int orderNumber, String orderType, Long issueId) {
-        Order order = new Order(orderNumber, OrderType.valueOf(orderType), Issue.find.ref(issueId));
+        Issue issue = Issue.find.ref(issueId);
+
+        Order order = new Order(orderNumber, OrderType.valueOf(orderType), issue);
         order.save();
+
+        issue.orders.add(order);
+        Ebean.saveAssociation(issue, "orders");
 
         return order;
     }
