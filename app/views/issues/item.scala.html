@@ -1,0 +1,10 @@
+@(issue: Issue)
+
+<li data-task-id="@issue.id">
+    <h4>@issue.issueName @issue.getTitleString()</h4>
+    @if(issue.createdAt != null) {
+        <time datetime="@issue.createdAt">
+        @issue.createdAt.format("MMM dd yyyy")</time>
+    }
+
+</li>
