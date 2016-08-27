@@ -23,58 +23,58 @@
 # character
 
 - &mister_fantastic !!models.Character
-    characterName:      Mister Fantastic
+    characterName:      Mr. Fantastic
     characterRealName:  Reed Richards
-    imageName:          mister_fantastic
+    imageName:          mr_fantastic_(reed_richards)
     teams:
         - *fanta4team
 
-- &invisible_girl !!models.Character
-    characterName:      Invisible Girl
+- &invisible_woman !!models.Character
+    characterName:      Invisible Woman
     characterRealName:  Susan Storm
-    imageName:          invisible_girl
+    imageName:          invisible_woman_(susan_storm)
     teams:
         - *fanta4team
 
 - &thing !!models.Character
     characterName:      Thing
     characterRealName:  Benjamin Grimm
-    imageName:          thing
+    imageName:          thing_(benjamin_grimm)
     teams:
         - *fanta4team
 
 - &human_torch !!models.Character
     characterName:      Human Torch
     characterRealName:  Johnny Storm
-    imageName:          human_torch
+    imageName:          human_torch_(johnny_storm)
     teams:
         - *fanta4team
 
 - &spiderman !!models.Character
     characterName:      Spider-Man
     characterRealName:  Peter Parker
-    imageName:          spider_man
+    imageName:          spider_man_(peter_parker)
     teams:
 
 
 - &thor !!models.Character
     characterName:      Thor
     characterRealName:  Thor Odinson
-    imageName:          thor
+    imageName:          thor_(thor_odinson)
     teams:
         - *avengersteam
 
 - &iron_man !!models.Character
     characterName:      Iron Man
     characterRealName:  Tony Stark
-    imageName:          iron_man
+    imageName:          iron_man_(tony_stark)
     teams:
         - *avengersteam
 
 - &hulk !!models.Character
     characterName:      Hulk
     characterRealName:  Bruce Banner
-    imageName:          hulk
+    imageName:          hulk_(bruce_banner)
     teams:
         - *avengersteam
 
@@ -88,7 +88,7 @@
 - &wasp !!models.Character
     characterName:      Wasp
     characterRealName:  Janet van Dyne
-    imageName:          wasp
+    imageName:          wasp_(janet_van_dyne)
     teams:
         - *avengersteam
 
@@ -232,9 +232,9 @@
     character: *mister_fantastic
     issue: *avengers3
 
-- &avengers3invisible_girl !!models.CharacterAppearance
-    description: Invisible Girl is not seen in this issue
-    character: *invisible_girl
+- &avengers3invisible_woman !!models.CharacterAppearance
+    description: Invisible Woman is not seen in this issue
+    character: *invisible_woman
     issue: *avengers3
 
 - &avengers3thing !!models.CharacterAppearance
@@ -252,9 +252,9 @@
     character: *mister_fantastic
     issue: *fanta422
 
-- &fanta422invisible_girl !!models.CharacterAppearance
-    description: Invisible Girl is not seen in this issue
-    character: *invisible_girl
+- &fanta422invisible_woman !!models.CharacterAppearance
+    description: Invisible Woman is not seen in this issue
+    character: *invisible_woman
     issue: *fanta422
 
 - &fanta422thing !!models.CharacterAppearance
@@ -272,9 +272,9 @@
     character: *mister_fantastic
     issue: *fanta423
 
-- &fanta423invisible_girl !!models.CharacterAppearance
-    description: Invisible Girl is not seen in this issue
-    character: *invisible_girl
+- &fanta423invisible_woman !!models.CharacterAppearance
+    description: Invisible Woman is not seen in this issue
+    character: *invisible_woman
     issue: *fanta423
 
 - &fanta423thing !!models.CharacterAppearance
@@ -302,9 +302,9 @@
     character: *mister_fantastic
     issue: *fanta424
 
-- &fanta424invisible_girl !!models.CharacterAppearance
-    description: Invisible Girl is not seen in this issue
-    character: *invisible_girl
+- &fanta424invisible_woman !!models.CharacterAppearance
+    description: Invisible Woman is not seen in this issue
+    character: *invisible_woman
     issue: *fanta424
 
 - &fanta424thing !!models.CharacterAppearance

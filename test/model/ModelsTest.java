@@ -54,7 +54,7 @@ public class ModelsTest extends WithApplication{
         Character character = Character.findByCharacterName("Spider-Man");
         assertEquals(0, character.teams.size());
 
-        character = Character.findByCharacterName("Mister Fantastic");
+        character = Character.findByCharacterName("Mr. Fantastic");
         assertEquals(1, character.teams.size());
     }
 
@@ -72,7 +72,7 @@ public class ModelsTest extends WithApplication{
 
     @Test
     public void testAppearances() {
-        Character character = Character.findByCharacterName("Mister Fantastic");
+        Character character = Character.findByCharacterName("Mr. Fantastic");
         Title title = Title.findByNameAndNumber("Fantastic Four", "v1");
 
         List<CharacterAppearance> byCharacterAndOrder = CharacterAppearance.findByCharacterAndOrder(character.id, OrderType.MAIN);
@@ -83,15 +83,15 @@ public class ModelsTest extends WithApplication{
 
         List<CharacterAppearance> appearances = CharacterAppearance.findByCharacterAndTitleAndOrder(character.id, title.id, OrderType.MAIN);
         assertEquals(3, appearances.size());
-        assertEquals("Mister Fantastic", appearances.get(0).character.characterName);
+        assertEquals("Mr. Fantastic", appearances.get(0).character.characterName);
         assertEquals("Fantastic Four", appearances.get(0).issue.title.titleName);
         assertEquals(OrderType.MAIN, appearances.get(0).issue.orders.get(0).orderType);
     }
 
     @Test
     public void testToString() {
-        Character character = Character.findByCharacterName("Mister Fantastic");
-        assertEquals("Mister Fantastic (Reed Richards)", character.toString());
+        Character character = Character.findByCharacterName("Mr. Fantastic");
+        assertEquals("Mr. Fantastic (Reed Richards)", character.toString());
 
         character = Character.findByCharacterName("Thor");
         assertEquals("Thor (Thor Odinson)", character.toString());
