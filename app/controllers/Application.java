@@ -1,5 +1,6 @@
 package controllers;
 
+import models.CharacterAppearance;
 import models.Issue;
 import models.Title;
 import play.mvc.Controller;
@@ -13,8 +14,7 @@ public class Application extends Controller {
 
     public Result index() {
         return ok(index.render(
-                Title.find.all(),
-                Issue.find.all()
+                CharacterAppearance.findNewestEntries(10)
         ));
     }
 

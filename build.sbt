@@ -15,12 +15,12 @@ libraryDependencies ++= Seq(
   "org.yaml" % "snakeyaml" % "1.17"
 )
 
-routesGenerator := InjectedRoutesGenerator
-
 javaOptions in Test += "-Dconfig.file=conf/test.conf"
+
+routesGenerator := InjectedRoutesGenerator
 
 PlayKeys.externalizeResources := false
 
 offline := true;
 
-//fork in run := true
+fork in run := true

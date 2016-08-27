@@ -108,4 +108,13 @@ public class ModelsTest extends WithApplication{
         issue = Issue.findByIssueName("The Man Called Electro!");
         assertEquals("Amazing Spider-Man (v1) #9", issue.getTitleString());
     }
+
+    @Test
+    public void testNewestEntries() {
+        List<CharacterAppearance> newestEntries = CharacterAppearance.findNewestEntries(10);
+        assertEquals(10, newestEntries.size());
+
+        newestEntries = CharacterAppearance.findNewestEntries(5);
+        assertEquals(5, newestEntries.size());
+    }
 }

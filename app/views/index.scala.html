@@ -1,6 +1,6 @@
-@(titles: List[Title], issues: List[Issue])
+@(appearances: List[CharacterAppearance])
 
-@main("Welcome to Play") {
+@main("Welcome to Pain") {
     <header>
         <hgroup>
             <h1>Dashboard</h1>
@@ -9,20 +9,11 @@
     </header>
 
     <article class="issues">
-    @issues.groupBy(_.title).map {
-        case (title, issues) => {
-            <div class="folder" data-folder-id="@title.id">
-                <header>
-                    <h3>@title.titleName</h3>
-                </header>
-                <ul class="list">
-                @issues.map { issue =>
-                    @views.html.issues.item(issue)
-                }
-                </ul>
-            </div>
+        <ul class="list">
+        @appearances.map { appearance =>
+            @views.html.appearances.item(appearance)
         }
-    }
+        </ul>
     </article>
 
 }
