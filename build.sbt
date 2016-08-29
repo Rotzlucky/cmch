@@ -23,4 +23,4 @@ PlayKeys.externalizeResources := false
 
 offline := true;
 
-fork in run := true
+fork in run := false

@@ -69,8 +69,10 @@ public class CharacterAppearance extends Model {
 
     public static List<CharacterAppearance> findNewestEntries(int limit) {
         return find
+                .fetch("character")
+                .fetch("issue")
                 .where()
-                .orderBy("created_at DESC")
+                .orderBy("t0.created_at DESC")
                 .findPagedList(0, limit)
                 .getList();
     }

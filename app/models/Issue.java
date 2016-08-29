@@ -3,6 +3,7 @@ package models;
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
 import models.enums.Month;
+import services.LinkUtil;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -106,5 +107,26 @@ public class Issue extends Model{
         }
 
         return stringBuilder.toString();
+    }
+
+    public String getImagePath() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(LinkUtil.getIssueImagePath());
+        stringBuilder.append(title.titleName.replace(" ", "_").toLowerCase());
+        stringBuilder.append("_");
+        stringBuilder.append(title.titleNumber.toLowerCase());
+        stringBuilder.append("/");
+        stringBuilder.append(getIssueNumberWithXDigits(3));
+        if (issueNumberSuffix != null) {
+            stringBuilder.append(issueNumberSuffix);
+        }
+        stringBuilder.append(".jpg");
+
+        return stringBuilder.toString();
+    }
+
+    private String getIssueNumberWithXDigits(int numberOfDigits) {
+        return String.format("%0" + numberOfDigits + "d", issueNumber);
     }
 }

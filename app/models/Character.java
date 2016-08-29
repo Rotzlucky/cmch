@@ -2,6 +2,7 @@ package models;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import services.LinkUtil;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -65,6 +66,16 @@ public class Character extends Model{
             stringBuilder.append(characterRealName);
             stringBuilder.append(")");
         }
+
+        return stringBuilder.toString();
+    }
+
+    public String getImagePath() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(LinkUtil.getCharacterImagePath());
+        stringBuilder.append(imageName);
+        stringBuilder.append(".jpg");
 
         return stringBuilder.toString();
     }
