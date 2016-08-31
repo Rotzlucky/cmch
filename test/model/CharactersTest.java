@@ -1,12 +1,7 @@
 package model;
 
 import com.avaje.ebean.Ebean;
-import models.Character;
-import models.CharacterAppearance;
-import models.Issue;
-import models.Order;
-import models.Team;
-import models.Title;
+import models.ComicCharacter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +11,7 @@ import play.libs.Yaml;
 import play.test.WithApplication;
 
 import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -38,35 +34,42 @@ public class CharactersTest extends WithApplication {
 
     @Test
     public void testCharacterTeamsSize() {
-        Character character = Character.findByCharacterName("Spider-Man");
+        ComicCharacter character = ComicCharacter.findByCharacterName("Spider-Man");
         assertEquals(0, character.teams.size());
 
-        character = Character.findByCharacterName("Mr. Fantastic");
+        character = ComicCharacter.findByCharacterName("Mr. Fantastic");
         assertEquals(1, character.teams.size());
     }
 
 
     @Test
     public void testToString() {
-        Character character = Character.findByCharacterName("Mr. Fantastic");
+        ComicCharacter character = ComicCharacter.findByCharacterName("Mr. Fantastic");
         assertEquals("Mr. Fantastic (Reed Richards)", character.toString());
 
-        character = Character.findByCharacterName("Thor");
+        character = ComicCharacter.findByCharacterName("Thor");
         assertEquals("Thor (Thor Odinson)", character.toString());
 
-        character = Character.findByCharacterName("Henry Pym");
+        character = ComicCharacter.findByCharacterName("Henry Pym");
         assertEquals("Henry Pym", character.toString());
     }
 
     @Test
     public void testCharactersImagePath() {
-        Character character = Character.findByCharacterName("Mr. Fantastic");
+        ComicCharacter character = ComicCharacter.findByCharacterName("Mr. Fantastic");
         assertEquals("/assets/images/characters/mr_fantastic_(reed_richards).jpg", character.getImagePath());
 
-        character = Character.findByCharacterName("Hulk");
+        character = ComicCharacter.findByCharacterName("Hulk");
         assertEquals("/assets/images/characters/hulk_(bruce_banner).jpg", character.getImagePath());
 
-        character = Character.findByCharacterName("Henry Pym");
+        character = ComicCharacter.findByCharacterName("Henry Pym");
         assertEquals("/assets/images/characters/henry_pym.jpg", character.getImagePath());
+    }
+
+    @Test
+    public void testFindSortedByName() {
+        List<ComicCharacter> sortedByName = ComicCharacter.findSortedByName();
+        assertEquals("Henry Pym", sortedByName.get(0).characterName);
+        assertEquals("Wasp", sortedByName.get(sortedByName.size() - 1).characterName);
     }
 }

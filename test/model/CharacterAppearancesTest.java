@@ -1,7 +1,7 @@
 package model;
 
 import com.avaje.ebean.Ebean;
-import models.Character;
+import models.ComicCharacter;
 import models.CharacterAppearance;
 import models.Title;
 import models.enums.OrderType;
@@ -38,7 +38,7 @@ public class CharacterAppearancesTest extends WithApplication {
 
     @Test
     public void testAppearances() {
-        Character character = Character.findByCharacterName("Mr. Fantastic");
+        ComicCharacter character = ComicCharacter.findByCharacterName("Mr. Fantastic");
         Title title = Title.findByNameAndNumber("Fantastic Four", "v1");
 
         List<CharacterAppearance> byCharacterAndOrder = CharacterAppearance.findByCharacterAndOrder(character.id, OrderType.MAIN);

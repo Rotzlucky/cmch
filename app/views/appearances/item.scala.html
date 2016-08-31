@@ -1,9 +1,27 @@
 @(appearance: CharacterAppearance)
 
-<li data-task-id="@appearance.id">
+<div class="col-xs-12 col-md-offset-2 col-md-8">
+    <div class="appearance-block col-xs-12" data-task-id="@appearance.id">
 
-    <img src="@appearance.issue.getImagePath()"/>
-    <img src="@appearance.character.getImagePath()"/>
+        <div class="col-xs-12">
+            <h3>@appearance.issue.getTitleString() - @appearance.issue.issueName</h3>
+        </div>
 
-    @appearance.description
-</li>
+        <div class="col-xs-12 col-sm-6 double-image-box">
+            <img src="@appearance.issue.getImagePath()"/>
+            <img src="@appearance.character.getImagePath()"/>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-sm-pull-2">
+            <div class="bold">
+                @appearance.character.toString()
+            </div>
+            <div>
+                last modified on: @appearance.modifiedAt
+            </div>
+            <div>
+                @appearance.description
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+body {
+  background-color: #e8e8e8;
+}
+
+.big {
+  font-size: 1.625em;
+}
+
+.small {
+  font-size: 1em;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.appearance-block {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding-bottom: 10px;
+
+  .double-image-box {
+    img {
+      height: 150px;
+      width: 100px;
+    }
+  }
+}
+
+.character-block {
+  .name {
+    height: 40px;
+  }
+
+  .image-box {
+    padding-left: 0px;
+    padding-right: 0px;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+  }
+}

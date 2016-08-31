@@ -22,70 +22,70 @@
 
 # character
 
-- &mister_fantastic !!models.Character
+- &mister_fantastic !!models.ComicCharacter
     characterName:      Mr. Fantastic
     characterRealName:  Reed Richards
     imageName:          mr_fantastic_(reed_richards)
     teams:
         - *fanta4team
 
-- &invisible_woman !!models.Character
+- &invisible_woman !!models.ComicCharacter
     characterName:      Invisible Woman
     characterRealName:  Susan Storm
     imageName:          invisible_woman_(susan_storm)
     teams:
         - *fanta4team
 
-- &thing !!models.Character
+- &thing !!models.ComicCharacter
     characterName:      Thing
     characterRealName:  Benjamin Grimm
     imageName:          thing_(benjamin_grimm)
     teams:
         - *fanta4team
 
-- &human_torch !!models.Character
+- &human_torch !!models.ComicCharacter
     characterName:      Human Torch
     characterRealName:  Johnny Storm
     imageName:          human_torch_(johnny_storm)
     teams:
         - *fanta4team
 
-- &spiderman !!models.Character
+- &spiderman !!models.ComicCharacter
     characterName:      Spider-Man
     characterRealName:  Peter Parker
     imageName:          spider_man_(peter_parker)
     teams:
 
 
-- &thor !!models.Character
+- &thor !!models.ComicCharacter
     characterName:      Thor
     characterRealName:  Thor Odinson
     imageName:          thor_(thor_odinson)
     teams:
         - *avengersteam
 
-- &iron_man !!models.Character
+- &iron_man !!models.ComicCharacter
     characterName:      Iron Man
     characterRealName:  Tony Stark
     imageName:          iron_man_(tony_stark)
     teams:
         - *avengersteam
 
-- &hulk !!models.Character
+- &hulk !!models.ComicCharacter
     characterName:      Hulk
     characterRealName:  Bruce Banner
     imageName:          hulk_(bruce_banner)
     teams:
         - *avengersteam
 
-- &henry_pym !!models.Character
+- &henry_pym !!models.ComicCharacter
     characterName:      Henry Pym
     characterRealName:  Henry Pym
     imageName:          henry_pym
     teams:
         - *avengersteam
 
-- &wasp !!models.Character
+- &wasp !!models.ComicCharacter
     characterName:      Wasp
     characterRealName:  Janet van Dyne
     imageName:          wasp_(janet_van_dyne)

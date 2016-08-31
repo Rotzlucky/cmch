@@ -21,7 +21,7 @@ public class CharacterAppearance extends Model {
     public Long id;
     public String description;
     @ManyToOne
-    public Character character;
+    public ComicCharacter character;
     @ManyToOne
     public Issue issue;
     public Date createdAt;
@@ -29,7 +29,7 @@ public class CharacterAppearance extends Model {
 
     public static Finder<Long, CharacterAppearance> find = new Finder<>(CharacterAppearance.class);
 
-    public CharacterAppearance(String description, Character character, Issue issue) {
+    public CharacterAppearance(String description, ComicCharacter character, Issue issue) {
         this.description = description;
         this.character = character;
         this.issue = issue;
@@ -39,7 +39,7 @@ public class CharacterAppearance extends Model {
 
     public static CharacterAppearance create(String description, Long characterId, Long issueId) {
         CharacterAppearance appearance = new CharacterAppearance(description,
-                Character.find.ref(characterId),
+                ComicCharacter.find.ref(characterId),
                 Issue.find.ref(issueId));
         appearance.save();
 

@@ -3,6 +3,16 @@
 
 # --- !Ups
 
+create table character_appearances (
+  id                            bigint auto_increment not null,
+  description                   varchar(255),
+  character_id                  bigint,
+  issue_id                      bigint,
+  created_at                    datetime(6),
+  modified_at                   datetime(6),
+  constraint pk_character_appearances primary key (id)
+);
+
 create table characters (
   id                            bigint auto_increment not null,
   character_name                varchar(255),
@@ -18,16 +28,6 @@ create table characters_teams (
   characters_id                 bigint not null,
   teams_id                      bigint not null,
   constraint pk_characters_teams primary key (characters_id,teams_id)
-);
-
-create table character_appearances (
-  id                            bigint auto_increment not null,
-  description                   varchar(255),
-  character_id                  bigint,
-  issue_id                      bigint,
-  created_at                    datetime(6),
-  modified_at                   datetime(6),
-  constraint pk_character_appearances primary key (id)
 );
 
 create table issues (
@@ -82,17 +82,17 @@ create table titles (
   constraint pk_titles primary key (id)
 );
 
-alter table characters_teams add constraint fk_characters_teams_characters foreign key (characters_id) references characters (id) on delete restrict on update restrict;
-create index ix_characters_teams_characters on characters_teams (characters_id);
-
-alter table characters_teams add constraint fk_characters_teams_teams foreign key (teams_id) references teams (id) on delete restrict on update restrict;
-create index ix_characters_teams_teams on characters_teams (teams_id);
-
 alter table character_appearances add constraint fk_character_appearances_character_id foreign key (character_id) references characters (id) on delete restrict on update restrict;
 create index ix_character_appearances_character_id on character_appearances (character_id);
 
 alter table character_appearances add constraint fk_character_appearances_issue_id foreign key (issue_id) references issues (id) on delete restrict on update restrict;
 create index ix_character_appearances_issue_id on character_appearances (issue_id);
+
+alter table characters_teams add constraint fk_characters_teams_characters foreign key (characters_id) references characters (id) on delete restrict on update restrict;
+create index ix_characters_teams_characters on characters_teams (characters_id);
+
+alter table characters_teams add constraint fk_characters_teams_teams foreign key (teams_id) references teams (id) on delete restrict on update restrict;
+create index ix_characters_teams_teams on characters_teams (teams_id);
 
 alter table issues add constraint fk_issues_title_id foreign key (title_id) references titles (id) on delete restrict on update restrict;
 create index ix_issues_title_id on issues (title_id);
@@ -109,17 +109,17 @@ create index ix_orders_issue_id on orders (issue_id);
 
 # --- !Downs
 
-alter table characters_teams drop foreign key fk_characters_teams_characters;
-drop index ix_characters_teams_characters on characters_teams;
-
-alter table characters_teams drop foreign key fk_characters_teams_teams;
-drop index ix_characters_teams_teams on characters_teams;
-
 alter table character_appearances drop foreign key fk_character_appearances_character_id;
 drop index ix_character_appearances_character_id on character_appearances;
 
 alter table character_appearances drop foreign key fk_character_appearances_issue_id;
 drop index ix_character_appearances_issue_id on character_appearances;
+
+alter table characters_teams drop foreign key fk_characters_teams_characters;
+drop index ix_characters_teams_characters on characters_teams;
+
+alter table characters_teams drop foreign key fk_characters_teams_teams;
+drop index ix_characters_teams_teams on characters_teams;
 
 alter table issues drop foreign key fk_issues_title_id;
 drop index ix_issues_title_id on issues;
@@ -133,11 +133,11 @@ drop index ix_issues_teams_teams on issues_teams;
 alter table orders drop foreign key fk_orders_issue_id;
 drop index ix_orders_issue_id on orders;
 
+drop table if exists character_appearances;
+
 drop table if exists characters;
 
 drop table if exists characters_teams;
-
-drop table if exists character_appearances;
 
 drop table if exists issues;
 

@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "5.1.35",
   javaWs,
   evolutions,
-  "org.yaml" % "snakeyaml" % "1.17"
+  "org.yaml" % "snakeyaml" % "1.17",
+  "org.webjars.bower" % "compass-mixins" % "0.12.7"
 )
 
 javaOptions in Test += "-Dconfig.file=conf/test.conf"

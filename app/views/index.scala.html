@@ -1,19 +1,15 @@
 @(appearances: List[CharacterAppearance])
 
-@main("Welcome to Pain") {
-    <header>
-        <hgroup>
-            <h1>Dashboard</h1>
-            <h2>Tasks over all projects</h2>
-        </hgroup>
-    </header>
+@main("Complete Marvel Character History") {
 
-    <article class="issues">
-        <ul class="list">
+    <div class="col-xs-12 col-md-offset-2 col-md-8">
+        <h2>Latest Appearance entries</h2>
+    </div>
+
+    <div class="character-appearances">
         @appearances.map { appearance =>
             @views.html.appearances.item(appearance)
         }
-        </ul>
-    </article>
+    </div>
 
 }

@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
  */
 @Entity
 @Table(name = "characters", uniqueConstraints = {@UniqueConstraint(columnNames = {"character_name", "character_real_name"})})
-public class Character extends Model{
+public class ComicCharacter extends Model{
 
     @Id
     public Long id;
@@ -33,9 +32,9 @@ public class Character extends Model{
     public Date createdAt;
     public Date modifiedAt;
 
-    public static Finder<Long, Character> find = new Finder<>(Character.class);
+    public static Finder<Long, ComicCharacter> find = new Finder<>(ComicCharacter.class);
 
-    public Character(String characterName, String characterRealName, String imageName, List<Team> teams) {
+    public ComicCharacter(String characterName, String characterRealName, String imageName, List<Team> teams) {
         this.characterName = characterName;
         this.characterRealName = characterRealName;
         this.imageName = imageName;
@@ -44,17 +43,21 @@ public class Character extends Model{
         this.modifiedAt = new Date();
     }
 
-    public static Character create(String characterName, String characterRealName, String imageName, List<Long> teamIds) {
+    public static ComicCharacter create(String characterName, String characterRealName, String imageName, List<Long> teamIds) {
         List<Team> teams = teamIds.stream().map(teamId -> Team.find.ref(teamId)).collect(Collectors.toList());
 
-        Character character = new Character(characterName, characterRealName, imageName, teams);
+        ComicCharacter character = new ComicCharacter(characterName, characterRealName, imageName, teams);
         character.save();
         Ebean.saveManyToManyAssociations(character, "teams");
 
         return character;
     }
 
-    public static Character findByCharacterName(String characterName) {
+    public static List<ComicCharacter> findSortedByName() {
+        return find.orderBy("character_name").findPagedList(0, 15).getList();
+    }
+
+    public static ComicCharacter findByCharacterName(String characterName) {
         return find.where().eq("characterName", characterName).findUnique();
     }
 
