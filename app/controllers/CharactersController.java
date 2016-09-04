@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.inject.Inject;
 import models.ComicCharacter;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -10,8 +11,10 @@ import views.html.characters.*;
  */
 public class CharactersController extends Controller{
 
+    @Inject WebJarAssets webJarAssets;
+
     public Result index() {
-        return ok(index.render(
+        return ok(index.render(webJarAssets,
                 ComicCharacter.findSortedByName()
         ));
     }

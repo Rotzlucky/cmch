@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.inject.Inject;
 import models.CharacterAppearance;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -10,8 +11,12 @@ import views.html.*;
  */
 public class Application extends Controller {
 
+    @Inject
+    WebJarAssets webJarAssets;
+
     public Result index() {
         return ok(index.render(
+                webJarAssets,
                 CharacterAppearance.findNewestEntries(10)
         ));
     }
