@@ -1,0 +1,7 @@
+@(appearances: List[CharacterAppearance])
+
+<div class="character-appearances">
+    @appearances.map { appearance =>
+        @views.html.appearances.item(appearance)
+    }
+</div>

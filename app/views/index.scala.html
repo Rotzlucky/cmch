@@ -6,10 +6,12 @@
         <h2>Latest Appearance entries</h2>
     </div>
 
-    <div class="character-appearances">
-        @appearances.map { appearance =>
-            @views.html.appearances.item(appearance)
-        }
+    @views.html.appearances.list(appearances)
+
+    <div class="col-xs-12">
+        <a class="js-get-more-btn">Get more</a>
     </div>
 
+    @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
+        module = routes.Assets.versioned("js/appearances/main").url)
 }

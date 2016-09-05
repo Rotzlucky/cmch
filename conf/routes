@@ -4,9 +4,13 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.Application.index
+GET     /appearances/more/:page     controllers.Application.more(page: Integer)
 
 GET     /characters/                controllers.CharactersController.index
+GET     /characters/show            controllers.CharactersController.show
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)
+
+GET     /javascriptRoutes           controllers.Application.jsRoutes

@@ -2,11 +2,7 @@
 
 @main(webJarAssets, "Complete Marvel Character History") {
 
-    <div class="col-xs-12 col-md-offset-1 col-md-10 character-appearances">
-    @characters.map { character =>
-        @views.html.characters.item(character)
-    }
-    </div>
+    @views.html.characters.list(characters)
 
     @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
         module = routes.Assets.versioned("js/characters/main").url)
