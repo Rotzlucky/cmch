@@ -21,7 +21,8 @@ public class Application extends Controller {
                 JavaScriptReverseRouter.create("jsRoutes",
                         routes.javascript.Application.more(),
                         routes.javascript.CharactersController.index(),
-                        routes.javascript.CharactersController.show()
+                        routes.javascript.CharactersController.show(),
+                        routes.javascript.CharactersController.create()
                 )
         ).as("text/javascript");
     }

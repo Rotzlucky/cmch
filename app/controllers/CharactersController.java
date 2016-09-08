@@ -10,6 +10,7 @@ import play.mvc.Result;
 import views.html.characters.index;
 import views.html.characters.list;
 import views.html.characters.show;
+import views.html.characters.create;
 
 /**
  * Created by marcelsteffen on 30.08.16.
@@ -31,6 +32,10 @@ public class CharactersController extends Controller{
                 webJarAssets,
                 ComicCharacter.find.ref(id),
                 CharacterAppearance.findByCharacterAndOrder(id, OrderType.valueOf(orderType))));
+    }
+
+    public Result create() {
+        return ok(create.render(webJarAssets));
     }
 
     private boolean isAjax() {

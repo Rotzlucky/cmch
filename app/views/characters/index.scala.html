@@ -1,6 +1,6 @@
 @(webJarAssets: WebJarAssets, characters: List[ComicCharacter])
 
-    @main(webJarAssets, "Complete Marvel Character History") {
+    @main(webJarAssets, "List of Characters | Complete Marvel Character History") {
 
 
         <div class="col-xs-12 top-bottom-margin">
@@ -11,6 +11,6 @@
         @views.html.characters.list(characters)
 
         @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
-            module = routes.Assets.versioned("js/characters/main").url)
+            module = routes.Assets.versioned("js/characters/index").url)
 
     }

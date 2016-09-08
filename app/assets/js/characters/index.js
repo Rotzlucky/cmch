@@ -2,20 +2,29 @@
 requirejs(['../common'], function (common) {
     require(["jquery"], function($){
         $(".js-character-block").on("click", function (e) {
-            characters.onclickHandler(e);
+            characters.show_clickHandler(e);
         });
 
         jQuery(".js-live-search").on("keyup", function (e) {
             characters.liveSearchHandler(e);
+        });
+
+        jQuery(".js-new-character-btn").on("click", function (e) {
+            characters.create_clickHandler(e);
         });
     });
 });
 
 var characters = {};
 
-characters.onclickHandler = function(e) {
+characters.show_clickHandler = function(e) {
     var button = jQuery(e.currentTarget);
     var route = jsRoutes.controllers.CharactersController.show(button.data("id"));
+    window.location = route.url;
+};
+
+characters.create_clickHandler = function(e) {
+    var route = jsRoutes.controllers.CharactersController.create();
     window.location = route.url;
 };
 
