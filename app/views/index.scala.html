@@ -2,17 +2,15 @@
 
 @main(webJarAssets, "Complete Marvel Character History") {
 
-    <div class="col-xs-12 col-md-offset-2 col-md-8">
-        <h2>Latest Appearance entries</h2>
-    </div>
+    <a href="@routes.CharactersController.index("")">Characters</a>
+
+    <h2>Latest Appearance entries</h2>
 
     <div class="character-appearances">
-        @views.html.appearances.list(appearances)
+    @views.html.appearances.list(appearances)
     </div>
 
-    <div class="col-xs-12">
-        <a class="ch-btn js-get-more-btn">Get more</a>
-    </div>
+    <a class="ch-btn js-get-more-btn">Get more</a>
 
     @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
         module = routes.Assets.versioned("js/appearances/main").url)

@@ -1,5 +1,5 @@
 @(characters: List[ComicCharacter])
 
 @characters.map { character =>
-    @views.html.characters.list_item(character)
+    @views.html.characters.item(character)
 }

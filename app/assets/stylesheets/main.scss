@@ -14,36 +14,38 @@ body {
   font-weight: bold;
 }
 
+
+
 .appearance-block {
   margin-bottom: 10px;
   border: 1px solid black;
   padding-bottom: 10px;
-
-  .double-image-box {
-    img {
-      height: 150px;
-      width: 100px;
-    }
-  }
 }
 
 .character-block {
   .name {
     height: 40px;
   }
+}
 
-  .image-box {
-    padding-left: 0px;
-    padding-right: 0px;
-
-    img {
-        height: 100%;
-        width: 100%;
-    }
+.double-image-box {
+  img {
+    height: 150px;
+    width: 100px;
   }
 }
 
-.top-botton-margin {
+.image-box {
+  padding-left: 0px;
+  padding-right: 0px;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.top-bottom-margin {
   margin-top: 10px;
   margin-bottom: 10px;
 

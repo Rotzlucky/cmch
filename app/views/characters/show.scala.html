@@ -1,0 +1,24 @@
+@(webJarAssets: WebJarAssets, character: ComicCharacter, appearances: List[CharacterAppearance])
+
+    @main(webJarAssets, "Complete Marvel Character History") {
+        <div class="col-xs-12 top-bottom-margin">
+            <div class="col-xs-12 col-sm-6 image-box">
+                <img src="@character.getImagePath">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-6 col-sm-4 bold text-right">
+                    <div>Name:</div>
+                    <div>Real Name:</div>
+                </div>
+                <div class="col-xs-6 col-sm-8">
+                    <div>@character.characterName</div>
+                    <div>@character.characterRealName</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Main Order Appearances</h2>
+        <div class="character-appearances">
+        @views.html.appearances.list(appearances)
+        </div>
+    }
