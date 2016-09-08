@@ -1,18 +1,22 @@
 @(webJarAssets: WebJarAssets, character: ComicCharacter, appearances: List[CharacterAppearance])
 
     @main(webJarAssets, "Complete Marvel Character History") {
+        <a href="@routes.CharactersController.index("")">Back</a>
+
         <div class="col-xs-12 top-bottom-margin">
             <div class="col-xs-12 col-sm-6 image-box">
                 <img src="@character.getImagePath">
             </div>
             <div class="col-xs-12 col-sm-6">
-                <div class="col-xs-6 col-sm-4 bold text-right">
+                <div class="col-xs-6 col-sm-4 bold text-right character-info">
                     <div>Name:</div>
                     <div>Real Name:</div>
+                    <div>Teams:</div>
                 </div>
-                <div class="col-xs-6 col-sm-8">
+                <div class="col-xs-6 col-sm-8 character-info">
                     <div>@character.characterName</div>
                     <div>@character.characterRealName</div>
+                    <div>@character.teams.map(team => team.teamName).mkString(",")</div>
                 </div>
             </div>
         </div>
