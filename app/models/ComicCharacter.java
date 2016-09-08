@@ -54,7 +54,16 @@ public class ComicCharacter extends Model{
     }
 
     public static List<ComicCharacter> findSortedByName() {
-        return find.orderBy("character_name").findPagedList(0, 15).getList();
+        return findSortedByName("");
+    }
+
+    public static List<ComicCharacter> findSortedByName(String query) {
+        return find
+                .where()
+                .like("character_name", "%" + query + "%")
+                .orderBy("character_name")
+                .findPagedList(0, 15)
+                .getList();
     }
 
     public static ComicCharacter findByCharacterName(String characterName) {

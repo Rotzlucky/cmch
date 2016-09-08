@@ -1,7 +1,5 @@
 @(characters: List[ComicCharacter])
 
-<div class="col-xs-12 col-md-offset-1 col-md-10 character-appearances">
-    @characters.map { character =>
-        @views.html.characters.item(character)
-    }
-</div>
+@characters.map { character =>
+    @views.html.characters.list_item(character)
+}

@@ -13,7 +13,6 @@ appearances.getMoreHandler = function(e) {
     var appearances_box = jQuery(".character-appearances");
     $.ajax(jsRoutes.controllers.Application.more(1)).done(
         function (data) {
-
             appearances_box.append(data);
         }
     );

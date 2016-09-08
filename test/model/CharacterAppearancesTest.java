@@ -56,13 +56,10 @@ public class CharacterAppearancesTest extends WithApplication {
 
     @Test
     public void testNewestEntries() {
-        List<CharacterAppearance> newestEntries = CharacterAppearance.findNewestEntries(10);
+        List<CharacterAppearance> newestEntries = CharacterAppearance.findNewestEntries(1, 10);
         assertEquals(10, newestEntries.size());
 
-        newestEntries = CharacterAppearance.findNewestEntries(5);
+        newestEntries = CharacterAppearance.findNewestEntries(1, 5);
         assertEquals(5, newestEntries.size());
-//        CharacterAppearance characterAppearance = newestEntries.get(0);
-//        System.out.println(characterAppearance.issue.getImagePath());
-//        System.out.println(characterAppearance.character.getImagePath());
     }
 }

@@ -71,5 +71,8 @@ public class CharactersTest extends WithApplication {
         List<ComicCharacter> sortedByName = ComicCharacter.findSortedByName();
         assertEquals("Henry Pym", sortedByName.get(0).characterName);
         assertEquals("Wasp", sortedByName.get(sortedByName.size() - 1).characterName);
+
+        sortedByName = ComicCharacter.findSortedByName("Hu");
+        assertEquals(2, sortedByName.size());
     }
 }

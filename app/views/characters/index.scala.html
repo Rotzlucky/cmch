@@ -2,7 +2,17 @@
 
 @main(webJarAssets, "Complete Marvel Character History") {
 
+
+    <div class="col-xs-12 col-md-offset-1 col-md-10">
+        <div class="col-xs-12 top-botton-margin">
+            <input class="col-xs-10 col-md-6 js-live-search" type="text"/>
+            <a class="pull-right ch-btn js-new-character-btn">New</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-offset-1 col-md-10 js-characters-container">
     @views.html.characters.list(characters)
+    </div>
 
     @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
         module = routes.Assets.versioned("js/characters/main").url)

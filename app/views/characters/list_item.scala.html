@@ -1,0 +1,12 @@
+@(character: ComicCharacter)
+
+<div class="col-xs-4 col-sm-2 character-block top-botton-margin">
+    <div class="ch-btn js-character-block" data-id="@character.id">
+        <div class="col-xs-12 image-box">
+            <img src="@character.getImagePath()"/>
+        </div>
+        <div class="col-xs-12 name">
+        @character.characterName
+        </div>
+    </div>
+</div>
