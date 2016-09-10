@@ -3,7 +3,6 @@ package services;
 import com.google.inject.Inject;
 import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor;
 import play.Application;
-import play.Environment;
 
 import java.io.InputStream;
 
