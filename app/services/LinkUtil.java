@@ -6,10 +6,18 @@ package services;
 public class LinkUtil {
 
     public static String getCharacterImagePath() {
-        return "/assets/images/characters/";
+        return "/files/images/characters/";
+    }
+
+    public static String getCharacterUploadPath() {
+        return baseUploadPath() + "images/characters/";
+    }
+
+    public static String baseUploadPath() {
+        return "/var/www/files/";
     }
 
     public static String getIssueImagePath() {
-        return "/assets/images/issues/";
+        return "/files/images/issues/";
     }
 }

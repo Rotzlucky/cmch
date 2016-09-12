@@ -1,5 +1,15 @@
-@(webJarAssets: WebJarAssets)
+@(webJarAssets: WebJarAssets, characterForm: Form[ComicCharacter])
 
 @main(webJarAssets, "Create new character | Complete Marvel Character History") {
     <h2>Create a new Character</h2>
+
+    @helper.form(action = routes.CharactersController.newCharacter(), 'enctype -> "multipart/form-data") {
+        @helper.inputText(field = characterForm("characterName"))
+        @helper.inputText(field = characterForm("characterRealName"))
+        @helper.inputFile(field = characterForm("characterImage"))
+
+        <p>
+            <input type="submit">
+        </p>
+    }
 }

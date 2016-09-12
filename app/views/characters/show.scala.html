@@ -26,3 +26,6 @@
         @views.html.appearances.list(appearances)
         </div>
     }
+
+@helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
+    module = routes.Assets.versioned("js/characters/show").url)

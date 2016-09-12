@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,8 +44,10 @@ public class ComicCharacter extends Model{
         this.modifiedAt = new Date();
     }
 
-    public static ComicCharacter create(String characterName, String characterRealName, String imageName, List<Long> teamIds) {
+    public static ComicCharacter create(String characterName, String characterRealName, File image, List<Long> teamIds) {
         List<Team> teams = teamIds.stream().map(teamId -> Team.find.ref(teamId)).collect(Collectors.toList());
+        String imageName = createImageName(characterName, characterRealName);
+        image.renameTo(new File(LinkUtil.getCharacterUploadPath(), imageName + ".jpg"));
 
         ComicCharacter character = new ComicCharacter(characterName, characterRealName, imageName, teams);
         character.save();
@@ -88,6 +91,17 @@ public class ComicCharacter extends Model{
         stringBuilder.append(LinkUtil.getCharacterImagePath());
         stringBuilder.append(imageName);
         stringBuilder.append(".jpg");
+
+        return stringBuilder.toString();
+    }
+
+    public static String createImageName(String characterName, String characterRealName) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(characterName.toLowerCase().replace(".", "").replace(" ", "_"));
+        stringBuilder.append("_(");
+        stringBuilder.append(characterRealName.toLowerCase().replace(".", "").replace(" ", "_"));
+        stringBuilder.append(")");
 
         return stringBuilder.toString();
     }

@@ -10,9 +10,11 @@ GET     /characters/                        controllers.CharactersController.ind
 GET     /characters/:query                  controllers.CharactersController.index(query: String)
 GET     /character/show/:id                controllers.CharactersController.show(id: Long, orderType ?= "MAIN")
 GET     /character/create                  controllers.CharactersController.create
+POST    /character/newCharacter                  controllers.CharactersController.newCharacter
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                       controllers.Assets.versioned(path="/public", file: Asset)
 GET     /webjars/*file                      controllers.WebJarAssets.at(file)
+GET     /files/*file                        controllers.Images.serve(file)
 
 GET     /javascriptRoutes                   controllers.Application.jsRoutes

@@ -19,9 +19,9 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-//        Content html = views.html.index.render("Your new application is ready.");
+//        Content html = views.html.index.render("Complete Marvel Character History");
 //        assertEquals("text/html", html.contentType());
-//        assertTrue(html.body().contains("Your new application is ready."));
+//        assertTrue(html.body().contains("Complete Marvel Character History"));
     }
 
 
