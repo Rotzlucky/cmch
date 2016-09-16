@@ -22,7 +22,8 @@ public class Application extends Controller {
                         routes.javascript.Application.more(),
                         routes.javascript.CharactersController.index(),
                         routes.javascript.CharactersController.show(),
-                        routes.javascript.CharactersController.create()
+                        routes.javascript.CharactersController.create(),
+                        routes.javascript.TeamController.teams()
                 )
         ).as("text/javascript");
     }

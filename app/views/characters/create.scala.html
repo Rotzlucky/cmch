@@ -1,15 +1,39 @@
-@(webJarAssets: WebJarAssets, characterForm: Form[ComicCharacter])
+@(characterForm: Form[ComicCharacter])
 
-@main(webJarAssets, "Create new character | Complete Marvel Character History") {
-    <h2>Create a new Character</h2>
+<div id="modal-create-character" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Create a new Character</h4>
+            </div>
+            <div class="modal-body">
 
-    @helper.form(action = routes.CharactersController.newCharacter(), 'enctype -> "multipart/form-data") {
-        @helper.inputText(field = characterForm("characterName"))
-        @helper.inputText(field = characterForm("characterRealName"))
-        @helper.inputFile(field = characterForm("characterImage"))
+                @helper.form(action = routes.CharactersController.newCharacter(), 'enctype -> "multipart/form-data") {
+                    @helper.inputText(field = characterForm("characterName"), '_label -> "Character Name")
+                    @helper.inputText(field = characterForm("characterRealName"), '_label -> "Character Real Name")
 
-        <p>
-            <input type="submit">
-        </p>
-    }
-}
+                    <div class="js-team-container">
+                        <input type="hidden" class="js-hidden-team-ids" name="team_ids">
+                        @helper.textarea(field = characterForm("characterTeamNames"),
+                            '_label -> "Groups", 'class -> "character-team-container js-team-names", 'readonly -> "readonly")
+                        @helper.inputText(field = characterForm("characterTeams"),
+                            '_label -> "Attach to a group!",
+                            'class -> "autocomplete",
+                            'placeholder -> "Enter group name")
+                    </div>
+
+                    @helper.inputFile(field = characterForm("characterImage"), '_label -> "Upload Character Image")
+
+                    <p>
+                        <input type="submit">
+                    </p>
+                }
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div> <!-- /.modal -->

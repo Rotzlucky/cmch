@@ -15,8 +15,9 @@
         },
         paths : {
             characters: '../characters',
-            "jquery" : "/webjars/jquery/1.11.1/jquery.min",
+            "jquery" : "/webjars/jquery/1.11.1/jquery",
             "bootstrap" : "/webjars/bootstrap/3.3.6/js/bootstrap.min",
+            "autocomplete" : "/webjars/jQuery-Autocomplete/1.2.7/jquery.autocomplete"
         }
     });
 

@@ -17,7 +17,8 @@ libraryDependencies ++= Seq(
   "org.webjars.bower" % "compass-mixins" % "0.12.7",
   "org.webjars" % "requirejs" % "2.1.14-1",
   "org.webjars" % "bootstrap" % "3.3.6" exclude("org.webjars", "jquery"),
-  "org.webjars" % "jquery" % "1.11.1"
+  "org.webjars" % "jquery" % "1.11.1",
+  "org.webjars" % "jQuery-Autocomplete" % "1.2.7"
 )
 
 javaOptions in Test += "-Dconfig.file=conf/test.conf"

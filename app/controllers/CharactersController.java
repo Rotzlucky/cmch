@@ -25,8 +25,6 @@ public class CharactersController extends Controller{
 
     @Inject WebJarAssets webJarAssets;
     @Inject FormFactory formFactory;
-    @Inject
-    Environment environment;
 
     public Result index(String query) {
         if (isAjax()) {
@@ -44,7 +42,7 @@ public class CharactersController extends Controller{
     }
 
     public Result create() {
-        return ok(create.render(webJarAssets, formFactory.form(ComicCharacter.class)));
+        return ok(create.render(formFactory.form(ComicCharacter.class)));
     }
 
     public Result newCharacter() {

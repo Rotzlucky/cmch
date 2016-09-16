@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by marcelsteffen on 15.08.16.
@@ -29,6 +30,16 @@ public class Team extends Model{
         this.createdAt = new Date();
         this.modifiedAt = new Date();
     }
+
+    public static List<Team> findSortedByName(String query) {
+        return find
+                .where()
+                .like("team_name", "%" + query + "%")
+                .orderBy("team_name")
+                .findPagedList(0, 5)
+                .getList();
+    }
+
 
     public static Team create(String teamName) {
         Team team = new Team(teamName);
