@@ -1,7 +1,6 @@
-@(webJarAssets: WebJarAssets, characters: List[ComicCharacter])
+@(webJarAssets: WebJarAssets, characters: List[ComicCharacter], modal: Html)
 
     @main(webJarAssets, "List of Characters | Complete Marvel Character History") {
-
 
         <div class="col-xs-12 top-bottom-margin">
             <input class="col-xs-10 col-md-6 js-live-search" type="text"/>
@@ -10,8 +9,14 @@
 
         @views.html.characters.list(characters)
 
+        @if(modal != null) {
+            <div class="js-modal-container">
+                @modal
+            </div>
+        } else {
+            <div class="js-modal-container"/>
+        }
+
         @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,
             module = routes.Assets.versioned("js/characters/index").url)
-
-        <div class="js-modal-container"/>
     }

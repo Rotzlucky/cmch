@@ -1,13 +1,17 @@
 package models;
 
 import com.avaje.ebean.Model;
+import play.mvc.Http;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by marcelsteffen on 15.08.16.
@@ -46,5 +50,16 @@ public class Team extends Model{
         team.save();
 
         return team;
+    }
+
+    public static List<Long> getTeamIdsFromCreateCharacterRequest(Http.MultipartFormData body) {
+        try {
+            String teamIdsString = Arrays.asList((String[]) body.asFormUrlEncoded().get("team_ids")).get(0);
+            List<String> idsList = Arrays.asList(teamIdsString.split(","));
+            return idsList.stream().map(id -> Long.valueOf(id)).collect(Collectors.toList());
+        } catch (Exception e) {
+            return Collections.emptyList();
+        }
+
     }
 }

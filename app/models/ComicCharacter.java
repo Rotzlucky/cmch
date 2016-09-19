@@ -2,6 +2,7 @@ package models;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import play.data.validation.Constraints;
 import services.LinkUtil;
 
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -25,7 +27,9 @@ public class ComicCharacter extends Model{
 
     @Id
     public Long id;
+    @Constraints.Required
     public String characterName;
+    @Constraints.Required
     public String characterRealName;
     public String imageName;
     @ManyToMany(cascade = CascadeType.REFRESH)
@@ -46,8 +50,12 @@ public class ComicCharacter extends Model{
 
     public static ComicCharacter create(String characterName, String characterRealName, File image, List<Long> teamIds) {
         List<Team> teams = teamIds.stream().map(teamId -> Team.find.ref(teamId)).collect(Collectors.toList());
-        String imageName = createImageName(characterName, characterRealName);
-        image.renameTo(new File(LinkUtil.getCharacterUploadPath(), imageName + ".jpg"));
+
+        String imageName = LinkUtil.getDefaultCharacterImageName();
+        if (Objects.nonNull(image)) {
+            imageName = createImageName(characterName, characterRealName);
+            image.renameTo(new File(LinkUtil.getCharacterUploadPath(), imageName + ".jpg"));
+        }
 
         ComicCharacter character = new ComicCharacter(characterName, characterRealName, imageName, teams);
         character.save();

@@ -12,6 +12,10 @@ requirejs(['../common'], function (common) {
         jQuery(".js-new-character-btn").on("click", function (e) {
             characters.create_clickHandler(e);
         });
+
+        if (jQuery(".js-modal-container").children().length > 0) {
+            characters.openModal();
+        }
     });
 });
 
@@ -27,13 +31,17 @@ characters.create_clickHandler = function (e) {
     jQuery.ajax(jsRoutes.controllers.CharactersController.create()).done(
         function (template) {
             jQuery(".js-modal-container").append(template);
-            jQuery("#modal-create-character").modal('show');
-
-            jQuery('input.autocomplete').each(function () {
-                characters.autocomplete_Handler(this);
-            });
+            characters.openModal();
         }
     );
+};
+
+characters.openModal = function() {
+    jQuery("#modal-create-character").modal('show');
+
+    jQuery('input.autocomplete').each(function () {
+        characters.autocomplete_Handler(this);
+    });
 };
 
 characters.live_searchHandler = function (e) {
@@ -70,7 +78,7 @@ characters.autocomplete_Handler = function (element) {
 
 };
 
-characters.autocomplete_selectHandler = function(data, element) {
+characters.autocomplete_selectHandler = function (data, element) {
     var container = element.closest(".js-team-container");
     var teamIdsElement = container.find(".js-hidden-team-ids");
     var teamNamesElement = container.find(".js-team-names");
@@ -78,7 +86,7 @@ characters.autocomplete_selectHandler = function(data, element) {
     var teamIds = teamIdsElement.val();
     var teamNames = teamNamesElement.val();
 
-    if (teamNames.indexOf(data.value + ",") == -1 ) {
+    if (teamNames.indexOf(data.value + ",") == -1) {
         if (teamIds.length === 0) {
             teamIds += data.data;
         } else {

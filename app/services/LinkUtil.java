@@ -20,4 +20,8 @@ public class LinkUtil {
     public static String getIssueImagePath() {
         return "/files/images/issues/";
     }
+
+    public static String getDefaultCharacterImageName() {
+        return "default_character";
+    }
 }
