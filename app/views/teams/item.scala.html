@@ -1,0 +1,6 @@
+@(team: Team, elementName: String)
+
+<div class="team-element js-team-element">
+    <input type="hidden" name="@elementName" value="@team.id"/>
+    <div class="team-element-input">@team.teamName <span class="controls js-remove"></span></div>
+</div>

@@ -5,7 +5,8 @@
 GET     /                                   controllers.Application.index
 GET     /appearances/more/:page             controllers.Application.more(page: Integer)
 
-GET     /teams                             controllers.TeamController.teams(query ?= "")
+GET     /teams                              controllers.TeamController.teams(query ?= "")
+GET     /team/show/:id                      controllers.TeamController.show(id: Long)
 
 GET     /characters                         controllers.CharactersController.index(query = "")
 GET     /characters/                        controllers.CharactersController.index(query = "")

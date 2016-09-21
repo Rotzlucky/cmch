@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -54,9 +55,17 @@ public class Team extends Model{
 
     public static List<Long> getTeamIdsFromCreateCharacterRequest(Http.MultipartFormData body) {
         try {
-            String teamIdsString = Arrays.asList((String[]) body.asFormUrlEncoded().get("team_ids")).get(0);
-            List<String> idsList = Arrays.asList(teamIdsString.split(","));
-            return idsList.stream().map(id -> Long.valueOf(id)).collect(Collectors.toList());
+            Set<String> set = body.asFormUrlEncoded().keySet();
+            List<Long> teamIds = set
+                    .stream()
+                    .filter(key -> key.contains("teamIds"))
+                    .collect(Collectors.toList())
+                    .stream()
+                    .map(idKey -> Arrays.asList((String[]) body.asFormUrlEncoded().get(idKey)).get(0))
+                    .map(id -> Long.valueOf(id))
+                    .collect(Collectors.toList());
+
+            return teamIds;
         } catch (Exception e) {
             return Collections.emptyList();
         }

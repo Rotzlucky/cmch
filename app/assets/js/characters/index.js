@@ -14,7 +14,7 @@ requirejs(['../common'], function (common) {
         });
 
         if (jQuery(".js-modal-container").children().length > 0) {
-            characters.openModal();
+            characters.openCreateModal();
         }
     });
 });
@@ -28,15 +28,20 @@ characters.show_clickHandler = function (e) {
 };
 
 characters.create_clickHandler = function (e) {
-    jQuery.ajax(jsRoutes.controllers.CharactersController.create()).done(
-        function (template) {
-            jQuery(".js-modal-container").append(template);
-            characters.openModal();
-        }
-    );
+    var modal = jQuery("#modal-create-character");
+    if (modal.length === 0) {
+        jQuery.ajax(jsRoutes.controllers.CharactersController.create()).done(
+            function (template) {
+                jQuery(".js-modal-container").append(template);
+                characters.openCreateModal();
+            }
+        );
+    } else {
+        characters.openCreateModal();
+    }
 };
 
-characters.openModal = function() {
+characters.openCreateModal = function () {
     jQuery("#modal-create-character").modal('show');
 
     jQuery('input.autocomplete').each(function () {
@@ -80,28 +85,35 @@ characters.autocomplete_Handler = function (element) {
 
 characters.autocomplete_selectHandler = function (data, element) {
     var container = element.closest(".js-team-container");
-    var teamIdsElement = container.find(".js-hidden-team-ids");
-    var teamNamesElement = container.find(".js-team-names");
+    var existingElements = container.find(".js-team-element");
 
-    var teamIds = teamIdsElement.val();
-    var teamNames = teamNamesElement.val();
-
-    if (teamNames.indexOf(data.value + ",") == -1) {
-        if (teamIds.length === 0) {
-            teamIds += data.data;
-        } else {
-            teamIds += "," + data.data;
+    var alreadyIn = false;
+    jQuery.each(existingElements, function (index, item) {
+        var existingElement = jQuery(item);
+        if (existingElement.find("input[type='hidden']").val() == data.data) {
+            alreadyIn = true;
         }
+    });
 
-        if (teamNames.length === 0) {
-            teamNames += data.value;
-        } else {
-            teamNames += "," + data.value;
-        }
-
-        teamIdsElement.val(teamIds);
-        teamNamesElement.val(teamNames);
+    if (!alreadyIn) {
+        jQuery.ajax(jsRoutes.controllers.TeamController.show(data.data)).done(
+            function (template) {
+                template = jQuery(template);
+                var count = container.find(".js-team-element").length;
+                var idInput = jQuery(template).find("input[type='hidden']");
+                idInput.attr("name", "teamIds[" + count + "]");
+                template.find(".js-remove").on("click", function (e) {
+                    characters.removeTeam_clickHandler(e);
+                });
+                container.append(template);
+            }
+        );
     }
 
     element.val("");
+};
+
+characters.removeTeam_clickHandler = function (e) {
+    var removeBtn = jQuery(e.currentTarget);
+    removeBtn.closest(".js-team-element").remove();
 };

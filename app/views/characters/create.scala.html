@@ -1,4 +1,4 @@
-@(characterForm: Form[ComicCharacter])
+@(characterForm: Form[ComicCharacter], character: ComicCharacter)
 
 <div id="modal-create-character" class="modal fade">
     <div class="modal-dialog" role="document">
@@ -15,14 +15,17 @@
                     @helper.inputText(field = characterForm("characterName"), '_label -> "Character Name")
                     @helper.inputText(field = characterForm("characterRealName"), '_label -> "Character Real Name")
 
-                    <div class="js-team-container">
-                        <input type="hidden" class="js-hidden-team-ids" name="team_ids">
-                        @helper.textarea(field = characterForm("characterTeamNames"),
-                            '_label -> "Groups", 'class -> "character-team-container js-team-names", 'readonly -> "readonly")
+                    <div class="team-container js-team-container">
                         @helper.inputText(field = characterForm("characterTeams"),
                             '_label -> "Attach to a group!",
                             'class -> "autocomplete",
                             'placeholder -> "Enter group name")
+
+                        @if(character != null) {
+                            @character.teams.zipWithIndex.map { case (team, index) =>
+                                @views.html.teams.item(team, "teamIds[" + index + "]")
+                            }
+                        }
                     </div>
 
                     @helper.inputFile(field = characterForm("characterImage"), '_label -> "Upload Character Image")

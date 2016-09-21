@@ -18,7 +18,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "requirejs" % "2.1.14-1",
   "org.webjars" % "bootstrap" % "3.3.6" exclude("org.webjars", "jquery"),
   "org.webjars" % "jquery" % "1.11.1",
-  "org.webjars" % "jQuery-Autocomplete" % "1.2.7"
+  "org.webjars" % "jQuery-Autocomplete" % "1.2.7",
+  "org.webjars.bower" % "font-awesome" % "4.6.3"
 )
 
 javaOptions in Test += "-Dconfig.file=conf/test.conf"

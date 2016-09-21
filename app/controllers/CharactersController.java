@@ -48,13 +48,13 @@ public class CharactersController extends Controller {
     }
 
     public Result create() {
-        return ok(create.render(formFactory.form(ComicCharacter.class)));
+        return ok(create.render(formFactory.form(ComicCharacter.class), null));
     }
 
     public Result newCharacter() {
         Form<ComicCharacter> comicCharacterForm = formFactory.form(ComicCharacter.class).bindFromRequest();
         if (comicCharacterForm.hasErrors()) {
-            return badRequest(index.render(webJarAssets, ComicCharacter.findSortedByName(), create.render(comicCharacterForm)));
+            return badRequest(index.render(webJarAssets, ComicCharacter.findSortedByName(), create.render(comicCharacterForm, null)));
         }
 
         ComicCharacter comicCharacter = comicCharacterForm.get();
