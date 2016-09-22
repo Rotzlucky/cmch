@@ -23,6 +23,8 @@ public class Application extends Controller {
                         routes.javascript.CharactersController.index(),
                         routes.javascript.CharactersController.show(),
                         routes.javascript.CharactersController.create(),
+                        routes.javascript.CharactersController.deleteConfirm(),
+                        routes.javascript.CharactersController.delete(),
                         routes.javascript.TeamController.teams(),
                         routes.javascript.TeamController.show()
                 )

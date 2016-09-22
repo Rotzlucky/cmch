@@ -11,6 +11,7 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import views.html.characters.create;
+import views.html.characters.delete_confirm;
 import views.html.characters.index;
 import views.html.characters.list;
 import views.html.characters.show;
@@ -72,6 +73,18 @@ public class CharactersController extends Controller {
                 Team.getTeamIdsFromCreateCharacterRequest(body)
         );
         return redirect(routes.CharactersController.show(character.id, OrderType.MAIN.name()));
+    }
+
+    public Result deleteConfirm(Long id) {
+        return ok(delete_confirm.render(ComicCharacter.find.ref(id)));
+    }
+
+    public Result delete(Long id) {
+
+        ComicCharacter comicCharacter = ComicCharacter.find.ref(id);
+        comicCharacter.delete();
+
+        return ok();
     }
 
     private boolean isAjax() {

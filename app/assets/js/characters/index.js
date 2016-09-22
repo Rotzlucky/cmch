@@ -13,6 +13,10 @@ requirejs(['../common'], function (common) {
             characters.create_clickHandler(e);
         });
 
+        jQuery(".js-remove-character").on("click", function (e) {
+            characters.confirmDelete_Handler(e);
+        });
+
         if (jQuery(".js-modal-container").children().length > 0) {
             characters.openCreateModal();
         }
@@ -25,28 +29,6 @@ characters.show_clickHandler = function (e) {
     var button = jQuery(e.currentTarget);
     var route = jsRoutes.controllers.CharactersController.show(button.data("id"));
     window.location = route.url;
-};
-
-characters.create_clickHandler = function (e) {
-    var modal = jQuery("#modal-create-character");
-    if (modal.length === 0) {
-        jQuery.ajax(jsRoutes.controllers.CharactersController.create()).done(
-            function (template) {
-                jQuery(".js-modal-container").append(template);
-                characters.openCreateModal();
-            }
-        );
-    } else {
-        characters.openCreateModal();
-    }
-};
-
-characters.openCreateModal = function () {
-    jQuery("#modal-create-character").modal('show');
-
-    jQuery('input.autocomplete').each(function () {
-        characters.autocomplete_Handler(this);
-    });
 };
 
 characters.live_searchHandler = function (e) {
@@ -116,4 +98,58 @@ characters.autocomplete_selectHandler = function (data, element) {
 characters.removeTeam_clickHandler = function (e) {
     var removeBtn = jQuery(e.currentTarget);
     removeBtn.closest(".js-team-element").remove();
+};
+
+characters.create_clickHandler = function (e) {
+    var modal = jQuery("#modal-create-character");
+    if (modal.length === 0) {
+        jQuery.ajax(jsRoutes.controllers.CharactersController.create()).done(
+            function (template) {
+                jQuery(".js-modal-container").append(template);
+                characters.openCreateModal();
+            }
+        );
+    } else {
+        characters.openCreateModal();
+    }
+};
+
+characters.openCreateModal = function () {
+    jQuery("#modal-create-character").modal('show');
+
+    jQuery('input.autocomplete').each(function () {
+        characters.autocomplete_Handler(this);
+    });
+};
+
+characters.confirmDelete_Handler = function (e) {
+    e.stopImmediatePropagation();
+
+    var removeButton = jQuery(e.currentTarget);
+    var id = removeButton.closest(".js-character-block").data("id");
+
+    var modal = jQuery("#modal-confirm-delete");
+
+    if (modal.length === 0) {
+        jQuery.ajax(jsRoutes.controllers.CharactersController.deleteConfirm(id)).done(
+            function (template) {
+                jQuery(".js-modal-container").append(template);
+                var modal = jQuery("#modal-confirm-delete");
+                modal.modal('show');
+                modal.find("a.btn-ok").on("click", function (e) {
+                    characters.delete(e);
+                });
+            }
+        );
+    } else {
+    }
+    modal.modal('.show');
+};
+
+characters.delete = function (e) {
+    var button = jQuery(e.currentTarget);
+    var id = button.data("id");
+    jQuery.ajax(jsRoutes.controllers.CharactersController.delete(id)).done(
+        window.location.reload()
+    );
 };

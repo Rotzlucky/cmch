@@ -14,6 +14,8 @@ GET     /characters/:query                  controllers.CharactersController.ind
 GET     /character/show/:id                 controllers.CharactersController.show(id: Long, orderType ?= "MAIN")
 GET     /character/create                   controllers.CharactersController.create
 POST    /character/newCharacter             controllers.CharactersController.newCharacter
+GET     /character/deleteconfirm/:id        controllers.CharactersController.deleteConfirm(id: Long)
+DELETE  /character/delete                   controllers.CharactersController.delete(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

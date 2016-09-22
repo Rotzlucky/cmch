@@ -32,7 +32,7 @@ public class ComicCharacter extends Model{
     @Constraints.Required
     public String characterRealName;
     public String imageName;
-    @ManyToMany(cascade = CascadeType.REFRESH)
+    @ManyToMany(cascade = CascadeType.REMOVE)
     public List<Team> teams = new ArrayList<>();
     public Date createdAt;
     public Date modifiedAt;
