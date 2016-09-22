@@ -1,7 +1,9 @@
 @(webJarAssets: WebJarAssets, character: ComicCharacter, appearances: List[CharacterAppearance])
 
     @main(webJarAssets, "Character Info | Complete Marvel Character History") {
-        <a href="@routes.CharactersController.index("")">Back</a>
+        <a class="btn btn-default" href="@routes.CharactersController.index("")">Back</a>
+        <a class="btn btn-default js-edit-btn">Edit</a>
+        <a class="btn btn-default js-delete-btn" data-id="@character.id">Delete</a>
 
         <div class="col-xs-12 top-bottom-margin">
             <div class="col-xs-12 col-sm-5 image-box">
@@ -27,6 +29,8 @@
         <div class="character-appearances">
         @views.html.appearances.list(appearances)
         </div>
+
+        <div class="js-modal-container"/>
     }
 
     @helper.requireJs(core = routes.Assets.versioned("lib/requirejs/require.js").url,

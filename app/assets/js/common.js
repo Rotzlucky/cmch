@@ -1,20 +1,13 @@
-//The build will inline common dependencies into this file.
-
-//For any third party dependencies, like jQuery, place them in the lib folder.
-
-//Configure loading modules from the lib directory,
-//except for 'app' ones, which are in a sibling
-//directory.
 (function(requirejs) {
     "use strict";
 
     requirejs.config({
-        baseUrl : "js/libs",
+        baseUrl : "js/lib",
         shim : {
             "bootstrap" : { "deps" :['jquery'] }
         },
         paths : {
-            characters: '../characters',
+            characters: '/assets/js/characters',
             "jquery" : "/webjars/jquery/1.11.1/jquery",
             "bootstrap" : "/webjars/bootstrap/3.3.6/js/bootstrap.min",
             "autocomplete" : "/webjars/jQuery-Autocomplete/1.2.7/jquery.autocomplete"
